@@ -50,4 +50,12 @@ public class ComparaFechas extends TestCase{
 		return String2Calendar(date, mask);
 	}
 	
+	private String getTodayAAAAMMDD(){
+		Calendar cal = Calendar.getInstance();
+		String YYYYMM = String.valueOf(cal.get(Calendar.YEAR)) + String.valueOf(cal.get(Calendar.MONTH));
+		String day = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+		String DD = (day.length() == 1) ? "0"+day : day;
+		return YYYYMM+DD;
+	}
+	
 }
