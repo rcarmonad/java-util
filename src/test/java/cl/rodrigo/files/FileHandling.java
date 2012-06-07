@@ -3,12 +3,15 @@ package cl.rodrigo.files;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
 
 import junit.framework.TestCase;
 
@@ -49,5 +52,21 @@ public class FileHandling extends TestCase{
 			return writer.toString();
 		}
 		return "";
+	}
+	
+	private void find00Register(String filePath) throws Exception{
+		File file = new File(filePath);
+		FileChannel fc = new FileInputStream(file).getChannel();
+		FileInputStream inputStream = new FileInputStream(file);
+		
+		String lineRead = null;
+		BufferedReader reader = new BufferedReader(Channels.newReader(fc, "UTF-8"));
+		
+		int lastLineNumber = 0;
+		int countLine = 1;
+		
+		for (countLine = 1; (lineRead = reader.readLine()) != null; countLine++) {
+			
+		}
 	}
 }
